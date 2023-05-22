@@ -56,12 +56,12 @@ def insert_into_database():
     genere = entry_genere.get()
 
     # Controllo se tutti i campi sono stati riempiti
-    if titolo and artista and anno and genere:
+    #if titolo and artista and anno and genere:
     # Esecuzione della query SQL per l'inserimento dei dati nella tabella
-        cursor.execute("INSERT INTO Musica (titolo, artista, anno, genere) VALUES (?, ?, ?, ?)", (titolo, artista, anno, genere))
-        conn.commit()
-    else:
-        print("Errore: tutti i campi devono essere riempiti")
+       # cursor.execute("INSERT INTO Musica (titolo, artista, anno, genere) VALUES (?, ?, ?, ?)", (titolo, artista, anno, genere))
+       # conn.commit()
+    #else:
+     #   print("Errore: tutti i campi devono essere riempiti")
 
     
 
