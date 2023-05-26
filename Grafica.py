@@ -81,13 +81,48 @@ def artisti_new_tab():
         # Messaggio di conferma dell'inserimento dei dati
         messagebox.showinfo(
             "Inserimento dati", "I dati sono stati inseriti con successo nel database")
+        
+#---visualizzare i la tabella
+    
+    def visualizza_artisti():
+        root = Tk()
+        root.geometry("400x300")
+        root.title("visualizza tabella")
+        
+        con1 = conn
 
+        cur1 = con1.cursor()
+
+        cur1.execute("SELECT * FROM artisti")
+        i=0 
+        for artisti in cur1: 
+            for j in range(len(artisti)):
+                e = Entry( root,width=15, fg='blue') 
+                e.grid(row=i, column=j) 
+                e.insert(END, artisti[j])
+            i=i+1    
+
+        root.mainloop()
+
+        buttonupdate = ttk.Button(root, text="Update", command=update_artisti)
+        buttonupdate.grid(row=8, column=1, columnspan=2, padx=10, pady=10)
+
+        def update_artisti():
+            root = Tk()
+            root.geometry("400x300")
+            root.title("update")
+
+    
     titolo_artisti = ttk.Label(
         root, text="Che azione desideri effettuare con gli artisti?")
     titolo_artisti.grid(row=0, column=0, padx=10, pady=10)
 
     buttonaggiungi = ttk.Button(root, text="Aggiungi", command=mostra)
     buttonaggiungi.grid(row=1, column=3, columnspan=2, padx=10, pady=10)
+
+    buttonmostra = ttk.Button(root, text="Visualizza", command=visualizza_artisti)
+    buttonmostra.grid(row=2, column=3, columnspan=2, padx=10, pady=10)
+
 
 # -------------------------------------------------genere------------------------------------------------------#
 
@@ -135,12 +170,38 @@ def generi_new_tab():
         # Messaggio di conferma dell'inserimento dei dati
         messagebox.showinfo(
             "Inserimento dati", "I dati sono stati inseriti con successo nel database")
+        
+
+    def visualizza_generi():
+        root = Tk()
+        root.geometry("400x300")
+        root.title("visualizza tabella")
+        
+        con1 = conn
+
+        cur1 = con1.cursor()
+
+        cur1.execute("SELECT * FROM genere")
+        i=0 
+        for genere in cur1: 
+            for j in range(len(genere)):
+                e = Entry( root,width=15, fg='blue') 
+                e.grid(row=i, column=j) 
+                e.insert(END, genere[j])
+            i=i+1    
+
+        root.mainloop()
 
     titolo_generi = ttk.Label(root, text="Che azione desideri effettuare con i generi?")
     titolo_generi.grid(row=0, column=0, padx=10, pady=10)
 
     buttonaggiungi = ttk.Button(root, text="Aggiungi", command=mostra)
     buttonaggiungi.grid(row=1, column=3, columnspan=2, padx=10, pady=10)
+
+    buttonvisualizza_genere = ttk.Button(root, text="Visualizza", command=visualizza_generi)
+    buttonvisualizza_genere.grid(row=2, column=3, columnspan=2, padx=10, pady=10)
+
+    
 
 
 # -------------------------------------------------canzoni------------------------------------------------------#
@@ -205,6 +266,26 @@ def canzoni_new_tab():
         # Messaggio di conferma dell'inserimento dei dati
         messagebox.showinfo(
             "Inserimento dati", "I dati sono stati inseriti con successo nel database")
+    
+    def visualizza_canzoni():
+        root = Tk()
+        root.geometry("500x300")
+        root.title("visualizza tabella")
+        
+        con1 = conn
+
+        cur1 = con1.cursor()
+
+        cur1.execute("SELECT * FROM canzoni")
+        i=0 
+        for canzone in cur1: 
+            for j in range(len(canzone)):
+                e = Entry( root,width=15, fg='blue') 
+                e.grid(row=i, column=j) 
+                e.insert(END, canzone[j])
+            i=i+1    
+
+        root.mainloop()
 
     titolo_canzoni = ttk.Label(root, text="Che azione desideri effettuare con le canzoni?")
     titolo_canzoni.grid(row=0, column=0, padx=10, pady=10)
@@ -212,6 +293,9 @@ def canzoni_new_tab():
     buttonaggiungi = ttk.Button(root, text="Aggiungi", command=mostra)
     buttonaggiungi.grid(row=1, column=3, columnspan=2, padx=10, pady=10)
 
+    
+    buttonavisualizza_canzoni = ttk.Button(root, text="Visualizza", command=visualizza_canzoni)
+    buttonavisualizza_canzoni.grid(row=2, column=3, columnspan=2, padx=10, pady=10)
 
 button_artisti = ttk.Button(root, text="Artisti", command=artisti_new_tab)
 button_artisti.grid(row=1, column=3, columnspan=2, padx=10, pady=10)
